@@ -1,19 +1,41 @@
 package com.vikash.DeepThoughtBackend.Model;
 
+import jakarta.persistence.*;
+
+
 import java.time.LocalDateTime;
-
+@Entity
+@Table(name = "events")
 public class Event {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private String id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "schedule")
     private LocalDateTime schedule;
+    @Column(name = "description")
     private String description;
+    @Column(name = "category")
     private String category;
+    @Column(name = "`moderator`")
     private String moderator;
+    @Column(name = "`type`")
     private String type;
-    private Integer limit;
-    private Integer page;
+    @Column(name = "`limit`")
+    private int limit;
+    @Column(name = "`page`")
+    private int page;
+    @Column(name = "sub_category")
+    private String sub_category;
+    @Column(name = "rigor_rank")
+    private int rigor_rank;
+    @Column(name = "`tagline`")
+    private String tagline;
 
-    public Event(String type,Integer limit, Integer page,String id, String name, LocalDateTime schedule, String description, String category, String moderator, String sub_category, Integer rigor_rank, String tagline) {
+
+    public Event(String type,int limit, int page, String id, String name, LocalDateTime schedule, String description, String category, String moderator, String sub_category, int rigor_rank, String tagline) {
         super();
         this.limit= limit;
         this.type= type;
@@ -28,6 +50,9 @@ public class Event {
         this.rigor_rank = rigor_rank;
         this.tagline = tagline;
     }
+    public Event(){
+
+    }
     public String getType() {
         return type;
     }
@@ -36,19 +61,19 @@ public class Event {
         this.type = type;
     }
 
-    public Integer getLimit() {
+    public int getLimit() {
         return limit;
     }
 
-    public void setLimit(Integer limit) {
+    public void setLimit(int limit) {
         this.limit = limit;
     }
 
-    public Integer getPage() {
+    public int getPage() {
         return page;
     }
 
-    public void setPage(Integer page) {
+    public void setPage(int page) {
         this.page = page;
     }
     public String getId() {
@@ -59,9 +84,7 @@ public class Event {
         this.id = id;
     }
 
-    public Event(){
 
-    }
 
     public String getName() {
         return name;
@@ -111,11 +134,11 @@ public class Event {
         this.sub_category = sub_category;
     }
 
-    public Integer getRigor_rank() {
+    public int getRigor_rank() {
         return rigor_rank;
     }
 
-    public void setRigor_rank(Integer rigor_rank) {
+    public void setRigor_rank(int rigor_rank) {
         this.rigor_rank = rigor_rank;
     }
 
@@ -127,8 +150,5 @@ public class Event {
         this.tagline = tagline;
     }
 
-    private String sub_category;
-    private Integer rigor_rank;
-    private String tagline;
 
 }
